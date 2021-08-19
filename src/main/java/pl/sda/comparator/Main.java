@@ -7,7 +7,12 @@ import java.util.List;
 public class Main {
 
     public static void main(String... args) {
-        Comparator<Employee> comparator = Comparator.comparingInt(Employee::getId);
+        Comparator<Employee> comparator = new Comparator<Employee>() {
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                return o1.getId() - o2.getId();
+            }
+        };
 
         List<Employee> employees = new ArrayList<>(List.of(
                 new Employee(2, "Dawid"),
